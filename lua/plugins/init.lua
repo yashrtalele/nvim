@@ -123,6 +123,17 @@ return {
       require "configs.null-ls"
     end,
   },
+  {
+    "jay-babu/mason-null-ls.nvim",
+    lazy = false,
+    opts = {
+      handlers = {},
+    },
+    dependencies = {
+      "williamboman/mason.nvim",
+      "jose-elias-alvarez/null-ls.nvim",
+    }
+  },
   -- These are some examples, uncomment them if you want to see them work!
   -- {
   --   "neovim/nvim-lspconfig",
