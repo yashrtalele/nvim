@@ -125,7 +125,7 @@ local opts = {
   -- },
   theme = "doom",
   hide = {
-    statusline = false,
+    statusline = true,
   },
   config = {
     header = vim.split(logo, "\n"),
