@@ -134,6 +134,13 @@ return {
       "jose-elias-alvarez/null-ls.nvim",
     }
   },
+  {
+    "mfussenegger/nvim-lint",
+    lazy = false,
+    config = function()
+      require("configs.nvim-lint")
+    end
+  },
   -- These are some examples, uncomment them if you want to see them work!
   -- {
   --   "neovim/nvim-lspconfig",

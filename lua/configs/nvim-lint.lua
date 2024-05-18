@@ -1,0 +1,13 @@
+require("lint").linters_by_ft = {
+  javascript = { "eslint" },
+  typescript = { "eslint" },
+  typescriptreact = { "eslint" },
+  javascriptreact = { "eslint" },
+}
+
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+  pattern = { "*.js", "*.jsx", "*.ts", "*.tsx", "*.vue" },
+  callback = function()
+    require("lint").try_lint()
+  end,
+})
