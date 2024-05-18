@@ -15,4 +15,8 @@ map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
 -- git
 map("n", "<leader>gb", "<cmd> Telescope git_branches <CR>", { desc = "Git branches" })
 map("n", "<leader>gp", "<cmd> Gitsigns preview_hunk <CR>", { desc = "Preview Hunk" })
-map("n", "<leader>gb", "<cmd> Gitsigns toggle_current_line_blame <CR>", { desc = "Toggle current line blame" })
+map("n", "<leader>gc", "<cmd> Gitsigns toggle_current_line_blame <CR>", { desc = "Toggle current line blame" })
+
+-- Multi line indent in visual mode
+map("v", ">", ">gv", { desc = "Indent right" })
+map("v", "<", "<gv", { desc = "Indent left" })
