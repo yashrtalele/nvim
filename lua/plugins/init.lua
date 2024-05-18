@@ -183,6 +183,14 @@ return {
       require("configs.nvim-dap-ui")
     end
   },
+  {
+    "mfussenegger/nvim-jdtls",
+    lazy = false,
+    ft = { java },
+    config = function()
+      require("configs.nvim-jdtls")
+    end
+  },
   -- These are some examples, uncomment them if you want to see them work!
   -- {
   --   "neovim/nvim-lspconfig",
