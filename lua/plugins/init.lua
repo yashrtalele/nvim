@@ -146,6 +146,43 @@ return {
       require("configs.nvim-lint")
     end
   },
+  {
+    "mfussenegger/nvim-dap",
+    lazy = false,
+    config = function ()
+      require("configs.nvim-dap")
+    end,
+    dependencies = {
+      {
+        "microsoft/vscode-js-debug",
+        build = "npm install --legacy-peer-deps --no-save && npx gulp vsDebugServerBundle && rm -rf out && mv dist out",
+        version = "1.*",
+      },
+      {
+        "mxsdev/nvim-dap-vscode-js",
+        config = function()
+          require("dap-vscode-js").setup({
+            debugger_path = vim.fn.resolve(vim.fn.stdpath("data") .. "/lazy/vscode-js-debug"),
+            adapters = { "chrome", "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" },
+          })
+        end
+      },
+    },
+  },
+  {
+    "nvim-neotest/nvim-nio",
+  },
+  {
+    "rcarriga/nvim-dap-ui",
+    lazy = false,
+    dependencies = {
+      "mfussenegger/nvim-dap",
+      "nvim-neotest/nvim-nio",
+    },
+    config = function()
+      require("configs.nvim-dap-ui")
+    end
+  },
   -- These are some examples, uncomment them if you want to see them work!
   -- {
   --   "neovim/nvim-lspconfig",
