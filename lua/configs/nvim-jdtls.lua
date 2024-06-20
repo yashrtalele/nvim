@@ -80,8 +80,8 @@ local function get_jdtls_paths()
     --   path = vim.fn.expand "/usr/lib/jvm/java-17-openjdk-amd64",
     -- },
     {
-      name = "JavaSE-22",
-      path = vim.fn.expand "/Library/Java/JavaVirtualMachines/jdk-22.jdk/Contents/Home",
+      name = "JavaSE-21",
+      path = vim.fn.expand "/Users/yash/.packages-dev/jdk-21.0.2.jdk/Contents/Home/",
     },
 
     -- {
@@ -132,7 +132,6 @@ local function jdtls_on_attach(client, bufnr)
   vim.keymap.set("n", "<leader>lec", "<cmd>lua require('jdtls').extract_constant()<cr>", opts)
   vim.keymap.set("x", "<leader>lec", "<esc><cmd>lua require('jdtls').extract_constant(true)<cr>", opts)
   vim.keymap.set("x", "<leader>lem", "<esc><Cmd>lua require('jdtls').extract_method(true)<cr>", opts)
-
 end
 
 local function jdtls_setup(event)
@@ -157,7 +156,8 @@ local function jdtls_setup(event)
   -- The command that starts the language server
   -- See: https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
   local cmd = {
-    "/Library/Java/JavaVirtualMachines/jdk-22.jdk/Contents/Home/bin/java",
+    -- "/Library/Java/JavaVirtualMachines/jdk-22.jdk/Contents/Home/bin/java",
+    "/opt/homebrew/opt/openjdk/bin/java",
     "-Declipse.application=org.eclipse.jdt.ls.core.id1",
     "-Dosgi.bundles.defaultStartLevel=4",
     "-Declipse.product=org.eclipse.jdt.ls.core.product",
@@ -286,4 +286,3 @@ vim.api.nvim_create_autocmd("FileType", {
   desc = "Setup jdtls",
   callback = jdtls_setup,
 })
-

@@ -10,21 +10,40 @@ return {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
-        "lua-language-server", "stylua",
-        "jdtls", "java-debug-adapter",
-        "css-lsp", "html-lsp", "typescript-language-server", "deno", "prettier", "js-debug-adapter", "tailwindcss-language-server",
-        "clangd", "clang-format", "codelldb", "shfmt",
-      }
-    }
+        "lua-language-server",
+        "stylua",
+        "jdtls",
+        "java-debug-adapter",
+        "css-lsp",
+        "html-lsp",
+        "typescript-language-server",
+        "deno",
+        "prettier",
+        "js-debug-adapter",
+        "tailwindcss-language-server",
+        "clangd",
+        "clang-format",
+        "codelldb",
+        "shfmt",
+      },
+    },
   },
   {
-    'Exafunction/codeium.vim',
-    config = function ()
+    "Exafunction/codeium.vim",
+    config = function()
       -- Change '<C-g>' here to any keycode you like.
-      vim.keymap.set('i', '<C-g>', function () return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
-      vim.keymap.set('i', '<C-;>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true, silent = true })
-      vim.keymap.set('i', '<C-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true, silent = true })
-      vim.keymap.set('i', '<C-x>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
+      vim.keymap.set("i", "<C-g>", function()
+        return vim.fn["codeium#Accept"]()
+      end, { expr = true, silent = true })
+      vim.keymap.set("i", "<C-;>", function()
+        return vim.fn["codeium#CycleCompletions"](1)
+      end, { expr = true, silent = true })
+      vim.keymap.set("i", "<C-,>", function()
+        return vim.fn["codeium#CycleCompletions"](-1)
+      end, { expr = true, silent = true })
+      vim.keymap.set("i", "<C-x>", function()
+        return vim.fn["codeium#Clear"]()
+      end, { expr = true, silent = true })
     end,
     lazy = false,
   },
@@ -49,7 +68,7 @@ return {
         "dockerfile",
       },
       indent = {
-        enable = true
+        enable = true,
       },
     },
   },
@@ -87,12 +106,12 @@ return {
               { find = "%d+L, %d+B" },
               { find = "; after #%d+" },
               { find = "; before #%d+" },
-            }
+            },
           },
           opts = { skip = true },
-          view = "mini"
+          view = "mini",
         },
-      }
+      },
     },
     config = function()
       require "configs.noice"
@@ -105,7 +124,7 @@ return {
   {
     "folke/todo-comments.nvim",
     event = "VeryLazy",
-    dependencies = { "nvim-lua/plenary.nvim" }
+    dependencies = { "nvim-lua/plenary.nvim" },
   },
   {
     "ThePrimeagen/refactoring.nvim",
@@ -137,20 +156,20 @@ return {
     dependencies = {
       "williamboman/mason.nvim",
       "jose-elias-alvarez/null-ls.nvim",
-    }
+    },
   },
   {
     "mfussenegger/nvim-lint",
     lazy = false,
     config = function()
-      require("configs.nvim-lint")
-    end
+      require "configs.nvim-lint"
+    end,
   },
   {
     "mfussenegger/nvim-dap",
     lazy = false,
-    config = function ()
-      require("configs.nvim-dap")
+    config = function()
+      require "configs.nvim-dap"
     end,
     dependencies = {
       {
@@ -161,11 +180,11 @@ return {
       {
         "mxsdev/nvim-dap-vscode-js",
         config = function()
-          require("dap-vscode-js").setup({
-            debugger_path = vim.fn.resolve(vim.fn.stdpath("data") .. "/lazy/vscode-js-debug"),
+          require("dap-vscode-js").setup {
+            debugger_path = vim.fn.resolve(vim.fn.stdpath "data" .. "/lazy/vscode-js-debug"),
             adapters = { "chrome", "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" },
-          })
-        end
+          }
+        end,
       },
     },
   },
@@ -180,16 +199,16 @@ return {
       "nvim-neotest/nvim-nio",
     },
     config = function()
-      require("configs.nvim-dap-ui")
-    end
+      require "configs.nvim-dap-ui"
+    end,
   },
   {
     "mfussenegger/nvim-jdtls",
     lazy = false,
     ft = { java },
     config = function()
-      require("configs.nvim-jdtls")
-    end
+      require "configs.nvim-jdtls"
+    end,
   },
   {
     "nvim-java/nvim-java",
@@ -207,10 +226,17 @@ return {
           registries = {
             "github:nvim-java/mason-registry",
             "github:mason-org/mason-registry",
-          }
-        }
-      }
-    }
+          },
+        },
+      },
+    },
+  },
+  {
+    "mhartington/formatter.nvim",
+    event = VeryLazy,
+    config = function()
+      require "configs.formatter"
+    end,
   },
   -- These are some examples, uncomment them if you want to see them work!
   -- {
@@ -219,5 +245,5 @@ return {
   --     require("nvchad.configs.lspconfig").defaults()
   --     require "configs.lspconfig"
   --   end,
-  -- }, 
+  -- },
 }
